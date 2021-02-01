@@ -17,6 +17,17 @@ for (let i = 0; i < points.length; i++) {
       sliderP.style.transition = 0.2 + 's'
       sliderP.style.marginLeft = points[i].id + 'px'
       setTimeout(() => sliderP.style.transition = 0 + 's', 201)
+      if (points[i].classList.contains('active')) {
+         for (let j = 0; j < points.length; j++) {
+            points[j].classList.remove('active')
+         }
+         points[i].classList.add('active')
+      } else {
+         for (let j = 0; j < points.length; j++) {
+            points[j].classList.remove('active')
+         }
+         points[i].classList.add('active')
+      }
    })
 }
 let cord = sliderP.offsetLeft

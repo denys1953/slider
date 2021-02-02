@@ -6,7 +6,7 @@ let img = document.getElementById('img').clientWidth
 let massive = []
 let str = ''
 let isMouseDown, cords
-let countColour = 0
+let countCowlour = 0
 let count = img
 console.log(img)
 
@@ -43,23 +43,25 @@ function mouseStart(e) {
    let marginLeft = sliderP.style.marginLeft
    let coords = getCoords(sliderP);
    let shiftX = e.touches[0].screenX - coords.left;
-   massive.length = 0
-   for (let i = 0; i < marginLeft.length; i++) {
-      massive.push(marginLeft[i])
-   }
-   massive.splice(-2, 2)
-   str = ''
-   for (let i = 0; i < massive.length; i++) {
-      str+=massive[i]
-   }
    if (Number(str) > 0) {
       sliderP.style.marginLeft = 0
    }
    sliderP.addEventListener('touchmove', (e) => {
+      massive.length = 0
+      for (let i = 0; i < marginLeft.length; i++) {
+         massive.push(marginLeft[i])
+      }
+      massive.splice(-2, 2)
+      str = ''
+      for (let i = 0; i < massive.length; i++) {
+         str+=massive[i]
+      }
       if (Number(str) <= 0) {
          sliderP.style.marginLeft = e.touches[0].screenX - cord - shiftX + 'px'
       } else {
          sliderP.style.marginLeft  = 0
+         console.log(3)
+         e.preventDefault()
       }
    })
    sliderP.addEventListener('touchend', () => {

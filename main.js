@@ -1,8 +1,9 @@
 let points = document.querySelectorAll('.div')
 let sliderP = document.querySelector('#slider-item')
 let colours = document.querySelectorAll('.color')
-let img = sliderP.clientWidth + 16
+let img = sliderP.clientWidth 
 
+console.log(img)
 sliderP.addEventListener('touchstart', mouseStart)
 sliderP.style.marginLeft = 0 + 'px'
 let word = 'transition'

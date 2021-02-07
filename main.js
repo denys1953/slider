@@ -1,11 +1,7 @@
-let points = document.querySelectorAll('.div')
 let sliderP = document.querySelector('#slider-item')
 let colours = document.querySelectorAll('.color')
+let point = document.querySelector('#points')
 let img = sliderP.clientWidth 
-
-console.log(img)
-sliderP.addEventListener('touchstart', mouseStart)
-sliderP.style.marginLeft = 0 + 'px'
 let word = 'transition'
 let cord = sliderP.offsetLeft
 let massive = []
@@ -13,6 +9,19 @@ let str = ''
 let isMouseDown, cords
 let countCowlour = 0
 let count = img
+sliderP.style.marginLeft = 0 + 'px'
+sliderP.addEventListener('touchstart', mouseStart)
+sliderP.addEventListener('touchend', mouseEnd)
+
+for (let i = 0; i < colours.length; i++) {
+   let elem = document.createElement('div')
+   elem.innerHTML = ''
+   elem.classList.add('div')
+   point.append(elem)
+}
+let points = document.querySelectorAll('.div')
+
+points[0].classList.add('active')
 
 for (let i = 0; i < points.length; i++) {
    points[i].setAttribute('id', count - img) 
@@ -39,23 +48,35 @@ function mouseStart(e) {
    let coords = getCoords(sliderP);
    let shiftX = e.touches[0].screenX - coords.left;
    sliderP.addEventListener('touchmove', (e) => {
-      str = sliderP.getAttribute('style')
-      if (str.includes(word)) {
-         str = str.slice(13, -31)
-      } else {
-         str = str.slice(13, -3)
-      }
-      if (Number(str) > 0) {
-         // sliderP.style.marginLeft  = 0
-
-         sliderP.style.marginLeft = e.touches[0].screenX - cord - shiftX + 'px'
-      } else if (Number(str) <= 0) {
-         sliderP.style.marginLeft = e.touches[0].screenX - cord - shiftX + 'px'
-      }
+      sliderP.style.marginLeft = e.touches[0].screenX - cord - shiftX + 'px'
    })
+   
 }
 
+function mouseEnd() {
+   str = sliderP.getAttribute('style')
+   if (str.includes(word)) str = str.slice(13, -31)
+   else str = str.slice(13, -3)
+   console.log(str, img)
+   if (str > -(img/2) || str > 0) {
+      transition()
+      sliderP.style.marginLeft = 0
+   } else if (str > -(img) || str > -(img*1.5)) {
+      transition()
+      sliderP.style.marginLeft = -img + 'px'
+   } else if (str > -(img * 2) || str > -(img*2.5)) {
+      transition()
+      sliderP.style.marginLeft = -img*2 + 'px'
+   } else if (str > -(img * 3) || str > -(img*5)) {
+      transition()
+      sliderP.style.marginLeft = -img*3 + 'px'
+   }
+}
 
+function transition() {
+   sliderP.style.transition = 0.4 + 's'
+   setTimeout(() => sliderP.style.transition = 0 + 's', 401)
+}
 
 function getCoords(elem) {  
    let box = elem.getBoundingClientRect();

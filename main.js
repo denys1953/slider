@@ -1,22 +1,29 @@
-
 let sliderP = document.querySelector('#slider-item')
 let colours = document.querySelectorAll('.color')
 let point = document.querySelector('#points')
 let img = window.innerWidth 
 let word = 'transition'
-let cord = sliderP.offsetLeft
-let massive = []
+let arrCount = 1
+let arrCount2 = 3.5
+let arr = [img/2, img*0]
+let arr2 = [img*1.5, img*2.5]
 let str = ''
-let isMouseDown, cords
-let countCowlour = 0
 let count = img
 sliderP.style.marginLeft = 0 + 'px'
+
+for (let i = 0; i < colours.length - 2; i++) {
+   arr.push(img * arrCount)
+   arr2.push(img * arrCount2)
+   arrCount++;arrCount2++
+}
+
 for (let i = 0; i < colours.length; i++) {
    let elem = document.createElement('div')
    elem.innerHTML = ''
    elem.classList.add('div')
    point.append(elem)
 }
+console.log(colours[0].alt)
 let points = document.querySelectorAll('.div')
 points[0].classList.add('active')
 for (let i = 0; i < points.length; i++) {
@@ -38,6 +45,7 @@ for (let i = 0; i < points.length; i++) {
          points[i].classList.add('active')
       }
    })
+   
 }
 function mouseStart(e) {
    let coords = getCoords(sliderP);
@@ -47,32 +55,24 @@ function mouseStart(e) {
    })
    
 }
-console.log(cord)
 function mouseEnd() {
    str = sliderP.getAttribute('style')
    if (str.includes(word)) str = str.slice(13, -31)
    else str = str.slice(13, -3)
-   console.log(str, img)
-   for (let i = 0; i < points.length; i++) {
-      points[i].classList.remove('active')
+
+   for (let i = 0; i < colours.length + 1; i++) {
+      for (let i = 0; i < points.length; i++) {
+         points[i].classList.remove('active')
+      }
+      if (str > -(arr[i]) || str > -(arr2[i-1])) {
+         if (i > colours.length - 1) i-- 
+         transition()
+         sliderP.style.marginLeft = -(img * i) + 'px'
+         points[i].classList.add('active')
+         return
+      } 
    }
-   if (str > -(img/2) || str > 0) {
-      transition()
-      sliderP.style.marginLeft = 0
-      points[0].classList.add('active')
-   } else if (str > -(img) || str > -(img*1.5)) {
-      transition()
-      sliderP.style.marginLeft = -img + 'px'
-      points[1].classList.add('active')
-   } else if (str > -(img * 2) || str > -(img*2.5)) {
-      transition()
-      sliderP.style.marginLeft = -img*2 + 'px'
-      points[2].classList.add('active')
-   } else if (str > -(img * 3) || str > -(img*5)) {
-      transition()
-      sliderP.style.marginLeft = -img*3 + 'px'
-      points[3].classList.add('active')
-   }
+
 }
 function transition() {
    sliderP.style.transition = 0.4 + 's'

@@ -46,36 +46,3 @@
 .div:hover {
    cursor: pointer;
 }
-/* 
-@media screen and (max-width: 543px) {
-   #slider-item img{
-      width: 341px;
-      height: 192px;
-   }
-   #slider-item {
-      width: 1364px;
-      height: 192px;
-      
-      transition: all ease 0.1s;
-   } 
-   .slider {
-      width: 341px;
-      height: 192px;
-   }
-}
-@media screen and (max-width: 372px) {
-   #slider-item img{
-      width: 256px;
-      height: 144px;
-   }
-   #slider-item {
-      width: 1024px;
-      height: 144px;
-      
-      transition: all ease 0.1s;
-   }
-   .slider {
-      width: 256px;
-      height: 144px;
-   }
-}  */

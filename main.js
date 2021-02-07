@@ -14,7 +14,7 @@ sliderP.addEventListener('touchstart', mouseStart)
 sliderP.addEventListener('touchend', mouseEnd)
 
 if (navigator.userAgent.indexOf("Chrome") != -1 ) {
-   img = sliderP.clientWidth + 16
+   img = sliderP.clientWidth 
 } else {
    img = sliderP.clientWidth
 }

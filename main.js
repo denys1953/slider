@@ -11,8 +11,6 @@ window.onload = function() {
    let countCowlour = 0
    let count = img
    sliderP.style.marginLeft = 0 + 'px'
-   sliderP.addEventListener('touchstart', mouseStart)
-   sliderP.addEventListener('touchend', mouseEnd)
 
    for (let i = 0; i < colours.length; i++) {
       let elem = document.createElement('div')
@@ -49,10 +47,11 @@ window.onload = function() {
       let coords = getCoords(sliderP);
       let shiftX = e.touches[0].screenX - coords.left;
       sliderP.addEventListener('touchmove', (e) => {
-         sliderP.style.marginLeft = e.touches[0].screenX - cord - shiftX + 'px'
+         sliderP.style.marginLeft = e.touches[0].screenX - shiftX + 'px'
       })
       
    }
+   console.log(cord)
 
    function mouseEnd() {
       str = sliderP.getAttribute('style')
@@ -85,4 +84,6 @@ window.onload = function() {
       left: box.left + pageXOffset
       }
    }
+   sliderP.addEventListener('touchstart', mouseStart)
+   sliderP.addEventListener('touchend', mouseEnd)
 }

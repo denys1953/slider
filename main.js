@@ -13,11 +13,6 @@ sliderP.style.marginLeft = 0 + 'px'
 sliderP.addEventListener('touchstart', mouseStart)
 sliderP.addEventListener('touchend', mouseEnd)
 
-if (navigator.userAgent.indexOf("Chrome") != -1 ) {
-   img = sliderP.clientWidth + 16
-} else {
-   img = sliderP.clientWidth
-}
 
 for (let i = 0; i < colours.length; i++) {
    let elem = document.createElement('div')

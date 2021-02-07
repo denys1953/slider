@@ -53,18 +53,25 @@ function mouseEnd() {
    if (str.includes(word)) str = str.slice(13, -31)
    else str = str.slice(13, -3)
    console.log(str, img)
+   for (let i = 0; i < points.length; i++) {
+      points[i].classList.remove('active')
+   }
    if (str > -(img/2) || str > 0) {
       transition()
       sliderP.style.marginLeft = 0
+      points[0].classList.add('active')
    } else if (str > -(img) || str > -(img*1.5)) {
       transition()
       sliderP.style.marginLeft = -img + 'px'
+      points[1].classList.add('active')
    } else if (str > -(img * 2) || str > -(img*2.5)) {
       transition()
       sliderP.style.marginLeft = -img*2 + 'px'
+      points[2].classList.add('active')
    } else if (str > -(img * 3) || str > -(img*5)) {
       transition()
       sliderP.style.marginLeft = -img*3 + 'px'
+      points[3].classList.add('active')
    }
 }
 function transition() {

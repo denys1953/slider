@@ -1,7 +1,7 @@
 let sliderP = document.querySelector('#slider-item')
 let colours = document.querySelectorAll('.color')
 let point = document.querySelector('#points')
-let img 
+let img = sliderP.clientWidth
 let word = 'transition'
 let cord = sliderP.offsetLeft
 let massive = []

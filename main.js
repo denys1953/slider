@@ -1,7 +1,7 @@
 let sliderP = document.querySelector('#slider-item')
 let colours = document.querySelectorAll('.color')
 let point = document.querySelector('#points')
-let img 
+let img = sliderP.clientWidth
 let word = 'transition'
 let cord = sliderP.offsetLeft
 let massive = []
@@ -14,7 +14,7 @@ sliderP.addEventListener('touchstart', mouseStart)
 sliderP.addEventListener('touchend', mouseEnd)
 
 if (navigator.userAgent.indexOf("Chrome") != -1 ) {
-   img = sliderP.clientWidth
+   img = sliderP.clientWidth + 16
 } else {
    img = sliderP.clientWidth
 }
